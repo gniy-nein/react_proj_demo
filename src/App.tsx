@@ -11,6 +11,12 @@ import { Container } from './components/Container';
 import { IsLoggedIn } from './components/state/loggedIn';
 import { User } from './components/state/User';
 import { Counter } from './components/state/Counter';
+import { Box } from './components/context/Box';
+import { ThemeContextProvider } from './components/context/ThemeContext';
+import { UserContextProvider } from './components/context/UserContext';
+import { UserContextChildren } from './components/context/User';
+import { DomRef } from './components/ref/DomRef';
+import { MutableRef } from './components/ref/MutableRef';
 
 function App() {
   const personName = {
@@ -61,7 +67,24 @@ function App() {
       <Button handleClick={ (event, id) => { console.log('hello', event, id) }} />
       <Input value="" handleChenge={ (event) => { console.log(event) }} />
       <Container styles={{ border: '1px dashed red', padding: '10px', width: 'fit-content'}} ></Container>
+
+      {/* useReducer */}
       <Counter/>
+
+      {/* useContext */}
+      <ThemeContextProvider>
+        <Box/>
+        <Box/>
+        <Box/>
+      </ThemeContextProvider>
+
+      <UserContextProvider>
+        <UserContextChildren/>
+      </UserContextProvider>
+
+      {/* useRef */}
+      <DomRef/>
+      <MutableRef/>
     </div>
   );
 }
