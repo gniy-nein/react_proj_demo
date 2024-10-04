@@ -18,6 +18,8 @@ import { UserContextChildren } from './components/context/User';
 import { DomRef } from './components/ref/DomRef';
 import { MutableRef } from './components/ref/MutableRef';
 import { ClassCounter } from './components/class/Counter';
+import { Private } from './components/auth/Private';
+import { Profile } from './components/auth/Profile';
 
 function App() {
   const personName = {
@@ -89,6 +91,9 @@ function App() {
 
       {/* classComponent */}
       <ClassCounter message='hello count value is'/>
+
+      {/* props component */}
+      <Private isLoggedIn={true} component={Profile} />
     </div>
   );
 }
