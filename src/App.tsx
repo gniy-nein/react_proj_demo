@@ -20,6 +20,7 @@ import { MutableRef } from './components/ref/MutableRef';
 import { ClassCounter } from './components/class/Counter';
 import { Private } from './components/auth/Private';
 import { Profile } from './components/auth/Profile';
+import { GenericList } from './components/generics/List';
 
 function App() {
   const personName = {
@@ -45,16 +46,16 @@ function App() {
   return (
     <div className="App">
       {/* <IsLoggedIn/> */}
-      <User/>
-      <Greet 
-        name="nienying" 
+      <User />
+      <Greet
+        name="nienying"
         messageCount={10}
         isLoggedIn={false}
       />
       <Person
         name={personName}
       />
-      <PersonList 
+      <PersonList
         names={nameList}
       />
 
@@ -63,37 +64,57 @@ function App() {
       <Osca>
         <Heading>Test Pass Component Cildren Text</Heading>
       </Osca>
-      <Greet 
-        name="nienying" 
+      <Greet
+        name="nienying"
         isLoggedIn={false}
       />
-      <Button handleClick={ (event, id) => { console.log('hello', event, id) }} />
-      <Input value="" handleChenge={ (event) => { console.log(event) }} />
-      <Container styles={{ border: '1px dashed red', padding: '10px', width: 'fit-content'}} ></Container>
+      <Button handleClick={(event, id) => { console.log('hello', event, id) }} />
+      <Input value="" handleChenge={(event) => { console.log(event) }} />
+      <Container styles={{ border: '1px dashed red', padding: '10px', width: 'fit-content' }} ></Container>
 
       {/* useReducer */}
-      <Counter/>
+      <Counter />
 
       {/* useContext */}
       <ThemeContextProvider>
-        <Box/>
-        <Box/>
-        <Box/>
+        <Box />
+        <Box />
+        <Box />
       </ThemeContextProvider>
 
       <UserContextProvider>
-        <UserContextChildren/>
+        <UserContextChildren />
       </UserContextProvider>
 
       {/* useRef */}
-      <DomRef/>
-      <MutableRef/>
+      <DomRef />
+      <MutableRef />
 
       {/* classComponent */}
-      <ClassCounter message='hello count value is'/>
+      <ClassCounter message='hello count value is' />
 
       {/* props component */}
       <Private isLoggedIn={true} component={Profile} />
+
+      {/* generic props */}
+      {/* <GenericList
+        items={['apple', 'banana', 'orange']}
+        onClickProps={(item) => { alert(item) }}
+      />
+
+      <GenericList
+        items={[1, 2, 3]}
+        onClickProps={(item) => { alert(item) }}
+      /> */}
+
+      <GenericList
+        items={[
+          { id:1, first: 'nienying', last: 'hung' },
+          { id:2, first: 'noom', last: 'nim' },
+          { id:3, first: 'nim', last: 'noom' }
+        ]}
+        onClickProps={(item) => { alert(item) }}
+      />
     </div>
   );
 }

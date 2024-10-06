@@ -1,0 +1,38 @@
+function getFirstElement<GenericType>(array: GenericType[]) {
+  return array[0];
+}
+
+const numbers = [1,2,3]
+const firstNumber = getFirstElement<number>(numbers);
+
+const fruits = ['apple', 'banana', 'orange']
+const firstFruit = getFirstElement<string>(fruits);
+
+
+const inputElement = document.querySelector<HTMLInputElement>('input')
+inputElement?.value
+
+
+
+type APIResponseType<Data> = {
+    data: Data
+    isError: boolean
+}
+
+type UseApiResponseType = APIResponseType<{ name: string, age:number}>
+type UseApiResponseTypeTwo = APIResponseType<{ id: number }>
+
+const response: UseApiResponseType = {
+    data: {
+        name: 'nienying',
+        age: 25
+    },
+    isError: false
+}
+
+const responseTwo: UseApiResponseTypeTwo = {
+    data: {
+        id: 1
+    },
+    isError: false
+}
